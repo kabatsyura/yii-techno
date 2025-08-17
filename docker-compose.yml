@@ -1,0 +1,35 @@
+services:
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+    volumes:
+      - .:/var/www/html
+    networks:
+      - app_network
+
+  nginx:
+    image: nginx:1.27
+    ports:
+      - "81:81"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - app_network
+
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - app_postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+volumes:
+  app_postgres_data:
+
+networks:
+  app_network:

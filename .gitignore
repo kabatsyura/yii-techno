@@ -1,0 +1,6 @@
+# ignore
+yii
+.idea
+vendor
+.env
+.DS_Store
