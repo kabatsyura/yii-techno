@@ -39,16 +39,20 @@ class ApiController extends Controller
             try {
                 $log = new UserLog();
                 $log->user_id = $user->id;
+                $currentTime = Yii::$app->formatter->asDatetime(time());
+
                 $log->message = sprintf(
-                    'Request to %s/%s with params: %s by %s',
+                    '[%s] Запрос к %s/%s с параметрами: %s. Создан id пользователем: %s',
+                    $currentTime,
                     $action->controller->id,
                     $action->id,
                     json_encode(Yii::$app->request->get()),
-                    $user ? "user_id={$user->id}" : 'guest'
+                    $user ? "{$user->id}" : 'guest'
                 );
+
                 $log->save(false);
             } catch (\Throwable $e) {
-                Yii::error('Failed to save user log: ' . $e->getMessage(), __METHOD__);
+                Yii::error('Ошибка при сохранении лога: ' . $e->getMessage(), __METHOD__);
             }
         }
 
