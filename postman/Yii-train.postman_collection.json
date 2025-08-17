@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "e88fb053-3d04-4fda-b3e7-024d5d238489",
+		"name": "Yii-train",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "37294229"
+	},
+	"item": [
+		{
+			"name": "http://localhost:81/v1/auth/login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"phone\": 9119111449\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:81/v1/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:81/v1/auth/confirm",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "WYOlkN7joSKYV2aQZNlY3SN-0g5QYNox"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:81/v1/auth/confirm"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:81/v1/site/check-name",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "OTyNWCRK009LnukXLY23F2mVPrJjPy8i"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:81/v1/site/check-name?name=Irina",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "81",
+					"path": [
+						"v1",
+						"site",
+						"check-name"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Irina"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:81/v1/site/show-logs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "OTyNWCRK009LnukXLY23F2mVPrJjPy8i"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:81/v1/site/show-logs"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,5 +1,6 @@
 services:
   php-fpm:
+    container_name: techno_php_fpm
     build:
       context: ./docker/php-fpm
     volumes:
@@ -8,6 +9,7 @@ services:
       - app_network
 
   nginx:
+    container_name: techno_nginx
     image: nginx:1.27
     ports:
       - "81:81"
