@@ -1,11 +1,46 @@
-# app
+1. При клонировании проекта, запускаем команду:
 
-## man to run project
+```
+make init
+```
 
-1. git clone & git pull
-2. create .env use .env.example
-3. run `docker compose up -d`
-4. in php-fpm container run `php init`
-5. in php-fpm container run `composer install`
-6. in php-fpm container run `php yii migrate`
-7. in php-fpm container run `php yii user/create-default phone password`
+Контейнеры будут собраны с корректным env значениями.
+
+2. Заходим в контейнер командой:
+
+```
+make bash
+```
+
+Внутри запускаем команды:
+`php init`
+`composer install`
+
+3. Устанавливаем миграции и создаем тестового пользователя:
+
+```
+init-db
+```
+
+4. Импортируйте коллекцию из папки postman для тестирования api.
+
+Для старта тестирования потребуется сделать логирование.
+
+http://localhost:81/v1/auth/login
+
+В body значения будет достаточно примера номера телефона:
+
+```
+{
+    "phone": 9119111449
+}
+```
+
+После, в таблице user возьмите токен для тестирования.
+
+5. Эндпоинты:
++ Проверка пользователя
+`http://localhost:81/v1/site/check-name?name=Irina`
+
++ Вывод локов:
+`http://localhost:81/v1/site/show-logs?user_id=1`
