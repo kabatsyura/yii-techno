@@ -16,6 +16,7 @@ class m250817_145723_create_user_log_table extends Migration
             'id' => $this->primaryKey(),
             'message' => $this->text()->notNull(),
             'user_id' => $this->integer()->notNull(),
+            'created_at' => $this->integer()->notNull(),
         ]);
 
         $this->addForeignKey(

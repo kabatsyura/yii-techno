@@ -27,7 +27,6 @@ class ApiModule extends Module
                 'class' => CompositeAuth::class,
                 'except' => [
                     'auth/login',
-                    // 'site/check-name',
                 ],
                 'authMethods' => [
                     QueryParamAuth::class,
